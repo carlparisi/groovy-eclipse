@@ -1834,7 +1834,11 @@ public class GroovyCompilationUnitDeclaration extends CompilationUnitDeclaration
 	// TODO find a better home for this?
 	@Override
 	public org.eclipse.jdt.core.dom.CompilationUnit getSpecialDomCompilationUnit(org.eclipse.jdt.core.dom.AST ast) {
-		return new org.codehaus.jdt.groovy.core.dom.GroovyCompilationUnit(ast);
+		try {
+			return new org.codehaus.jdt.groovy.core.dom.GroovyCompilationUnit(ast);
+		} catch (Throwable t) {
+			return null;
+		}
 	}
 
 	/**
